@@ -5,6 +5,7 @@ import userRoutes from "./routes/userRoutes.js";
 import urlRoutes from "./routes/urlRoutes.js";
 import url from "./models/urlModel.js";
 import expressAsyncHandler from "express-async-handler";
+import cors from "cors";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).send("Server Error");
 });
+app.use(cors())
 
 app.use(express.json());
 app.use("/api/url", urlRoutes);
